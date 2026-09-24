@@ -64,8 +64,8 @@ export default function Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#f9f2ea] flex justify-center">
-      <div className="w-full max-w-[430px] bg-white min-h-screen px-6 py-8 flex flex-col">
+    <main className="min-h-dvh bg-[#f9f2ea] flex justify-center">
+      <div className="w-full max-w-[430px] bg-white min-h-dvh px-6 py-8 flex flex-col">
 
         {/* SCREEN 1 — RATE */}
         {step === 1 && (
