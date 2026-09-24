@@ -64,29 +64,29 @@ export default function Page() {
   };
 
   return (
-    <main className="min-h-screen bg-[#eeece5] flex justify-center">
+    <main className="min-h-screen bg-[#f9f2ea] flex justify-center">
       <div className="w-full max-w-[430px] bg-white min-h-screen px-6 py-8 flex flex-col">
 
         {/* SCREEN 1 — RATE */}
         {step === 1 && (
           <div className="flex-1 flex flex-col items-center justify-center text-center gap-4">
-            <div className="w-20 h-20 rounded-2xl bg-[#e6f1fb] flex items-center justify-center text-3xl font-bold text-[#1767ad]">
-              K
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/chaileela-logo.jpg" alt={BUSINESS.name}
+              className="w-20 h-20 rounded-2xl object-cover shadow-sm" />
             <div>
-              <h1 className="text-2xl font-bold text-[#1a1a18]">{BUSINESS.name}</h1>
-              <p className="text-[#9a9a8e]">{BUSINESS.locality}</p>
+              <h1 className="font-display text-3xl font-extrabold text-[#2b1608]">{BUSINESS.name}</h1>
+              <p className="text-[#a6927f]">{BUSINESS.locality}</p>
             </div>
-            <h2 className="text-xl font-medium mt-6 text-[#1a1a18]">How was your visit?</h2>
+            <h2 className="text-xl font-medium mt-6 text-[#2b1608]">How was your visit?</h2>
             <div className="flex gap-2">
               {[1, 2, 3, 4, 5].map((n) => (
                 <button key={n} onClick={() => chooseRating(n)} aria-label={`${n} stars`}
-                  className="text-4xl leading-none text-[#d6d4cb] hover:text-[#ef9f27]">
+                  className="text-4xl leading-none text-[#e6d9cb] hover:text-[#fcb815]">
                   ★
                 </button>
               ))}
             </div>
-            <p className="text-sm text-[#9a9a8e] mt-4">tap to rate · about 15 seconds</p>
+            <p className="text-sm text-[#a6927f] mt-4">tap to rate · about 15 seconds</p>
           </div>
         )}
 
@@ -95,14 +95,14 @@ export default function Page() {
           <div className="flex-1 flex flex-col gap-5">
             <div className="flex items-center justify-between">
               <div className="text-lg">
-                <span className="text-[#ef9f27]">{"★".repeat(rating)}</span>
-                <span className="text-[#d6d4cb]">{"★".repeat(5 - rating)}</span>
+                <span className="text-[#fcb815]">{"★".repeat(rating)}</span>
+                <span className="text-[#e6d9cb]">{"★".repeat(5 - rating)}</span>
               </div>
-              <button onClick={() => setStep(1)} className="text-sm text-[#9a9a8e]">edit</button>
+              <button onClick={() => setStep(1)} className="text-sm text-[#a6927f]">edit</button>
             </div>
 
             <div>
-              <p className="font-medium text-[#67665e] mb-2">What stood out?</p>
+              <p className="font-medium text-[#7a6455] mb-2">What stood out?</p>
               <div className="flex flex-wrap gap-2">
                 {BUSINESS.aspects.map((a) => {
                   const l = aspectLabel(a);
@@ -110,8 +110,8 @@ export default function Page() {
                   return (
                     <button key={a.key} onClick={() => toggle(l, aspects, setAspects)}
                       className={`px-4 py-2 rounded-full text-sm border ${
-                        on ? "bg-[#e6f1fb] text-[#1767ad] border-transparent"
-                           : "bg-white text-[#67665e] border-[#d3d1c7]"}`}>
+                        on ? "bg-[#fdecc8] text-[#4e2000] border-transparent"
+                           : "bg-white text-[#7a6455] border-[#e6d9cb]"}`}>
                       {l}{on ? " ✓" : ""}
                     </button>
                   );
@@ -120,15 +120,15 @@ export default function Page() {
             </div>
 
             <div>
-              <p className="font-medium text-[#67665e] mb-2">What did you have?</p>
+              <p className="font-medium text-[#7a6455] mb-2">What did you have?</p>
               <div className="flex flex-wrap gap-2">
                 {BUSINESS.items.map((i) => {
                   const on = items.includes(i);
                   return (
                     <button key={i} onClick={() => toggle(i, items, setItems)}
                       className={`px-4 py-2 rounded-full text-sm border ${
-                        on ? "bg-[#eaf3ee] text-[#0f6e56] border-transparent"
-                           : "bg-white text-[#67665e] border-[#d3d1c7]"}`}>
+                        on ? "bg-[#fde4d8] text-[#dd2803] border-transparent"
+                           : "bg-white text-[#7a6455] border-[#e6d9cb]"}`}>
                       {i}{on ? " ✓" : ""}
                     </button>
                   );
@@ -137,13 +137,13 @@ export default function Page() {
             </div>
 
             {genError && (
-              <p className="text-sm text-center text-[#b3483d]">
+              <p className="text-sm text-center text-[#dd2803]">
                 Couldn&apos;t write your review — check your connection and try again.
               </p>
             )}
             <button onClick={generate}
               disabled={loading || (aspects.length === 0 && items.length === 0)}
-              className="mt-auto bg-[#1767ad] text-white rounded-2xl py-4 font-medium disabled:opacity-40">
+              className="mt-auto bg-[#4e2000] text-white rounded-2xl py-4 font-medium disabled:opacity-40">
               {loading ? "Writing…" : genError ? "Try again" : "Continue"}
             </button>
           </div>
@@ -153,52 +153,52 @@ export default function Page() {
         {step === 3 && (
           <div className="flex-1 flex flex-col gap-4">
             <div className="flex items-center justify-between">
-              <p className="font-medium text-[#67665e]">Your review</p>
+              <p className="font-medium text-[#7a6455]">Your review</p>
               <button onClick={generate} disabled={loading}
-                className="text-[#1767ad] font-medium disabled:opacity-40">
+                className="text-[#4e2000] font-medium disabled:opacity-40">
                 {loading ? "Writing…" : "Redo"}
               </button>
             </div>
             <textarea value={review} onChange={(e) => setReview(e.target.value)}
-              className="w-full h-40 rounded-2xl border border-[#d3d1c7] bg-[#fcfbf8] p-4 text-[#1a1a18] resize-none" />
+              className="w-full h-40 rounded-2xl border border-[#e6d9cb] bg-[#fdf8f2] p-4 text-[#2b1608] resize-none" />
             {genError && (
-              <p className="text-sm text-center text-[#b3483d]">
+              <p className="text-sm text-center text-[#dd2803]">
                 Couldn&apos;t regenerate — check your connection and try Redo again.
               </p>
             )}
             <button onClick={copyAndPost} disabled={loading}
-              className="mt-2 bg-[#1767ad] text-white rounded-2xl py-4 font-medium disabled:opacity-40">
+              className="mt-2 bg-[#4e2000] text-white rounded-2xl py-4 font-medium disabled:opacity-40">
               Copy &amp; post to Google
             </button>
-            <p className="text-center text-sm text-[#9a9a8e]">edit anything before you post</p>
+            <p className="text-center text-sm text-[#a6927f]">edit anything before you post</p>
           </div>
         )}
 
         {/* SCREEN 4 — PASTE & POST */}
         {step === 4 && (
           <div className="flex-1 flex flex-col items-center text-center gap-4 pt-10">
-            <div className="w-16 h-16 rounded-full bg-[#dcf4ec] flex items-center justify-center text-2xl text-[#0f6e56]">
+            <div className="w-16 h-16 rounded-full bg-[#fdecc8] flex items-center justify-center text-2xl text-[#4e2000]">
               ✓
             </div>
-            <h2 className="text-xl font-medium text-[#1a1a18]">
+            <h2 className="text-xl font-medium text-[#2b1608]">
               {copyFailed ? "Copy this review" : "Review copied"}
             </h2>
-            <p className="text-[#67665e]">
+            <p className="text-[#7a6455]">
               {copyFailed
                 ? "Couldn't copy automatically — select the text below and copy it yourself."
                 : "Your review is on the clipboard. In the live app this button also opens Google's review box to paste into — stubbed out for the mock."}
             </p>
             {copyFailed && (
               <textarea readOnly value={review} onFocus={(e) => e.target.select()}
-                className="w-full h-32 rounded-2xl border border-[#d3d1c7] bg-[#fcfbf8] p-4 text-[#1a1a18] resize-none" />
+                className="w-full h-32 rounded-2xl border border-[#e6d9cb] bg-[#fdf8f2] p-4 text-[#2b1608] resize-none" />
             )}
             {!posted ? (
               <button onClick={() => { setPosted(true); track("posted_tap"); }}
-                className="mt-4 border border-[#d3d1c7] rounded-2xl px-6 py-3 text-[#1a1a18]">
+                className="mt-4 border border-[#e6d9cb] rounded-2xl px-6 py-3 text-[#2b1608]">
                 I&apos;ve posted my review
               </button>
             ) : (
-              <p className="mt-4 text-[#0f6e56] font-medium">Thank you! 🎉</p>
+              <p className="mt-4 text-[#4e2000] font-medium">Thank you! 🎉</p>
             )}
           </div>
         )}

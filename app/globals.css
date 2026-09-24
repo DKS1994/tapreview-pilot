@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 body {
-  background: #eeece5;
-  color: #1a1a18;
+  background: #f9f2ea;
+  color: #2b1608;
+}
+
+.font-display {
+  font-family: var(--font-baloo), var(--font-poppins), sans-serif;
 }
